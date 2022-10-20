@@ -1,0 +1,289 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: "";
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background-image:url(../img/b//jpg);
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  position : sticky;
+  top: 0px;
+  overflow: hidden;
+  background-color: #f5f5dc;
+  color : navy;
+
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight : bolder;
+  transition : all 0.4s;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+  font-size : 30px;
+}
+
+#modal {
+	z-index : 1;
+	display: none;
+	position : fixed;
+	top: 0;
+	left: 0;
+	width : 100%;
+	height : 100%;
+	overflow : auto;
+	background-color : rgba(0,0,0,0.4)
+}
+
+.modal-content {
+	margin: auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 340px;
+	border: 2px solid tomato;
+	background: white;
+	transform: translate(-50%, -50%);
+}
+
+.login {
+	background:url("https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201910/27/5297f67b-6fcd-4fcd-8917-d318b81f9f99.jpg");
+	box-shadow : 5px 5px 5px 5px skyblue;
+	font-size : 20px;
+	border : 10px solid lightgrey;
+	border-radius: 30px;
+	position : fixed;
+ 	left : 50%;
+ 	top : 50%;
+	width : 400px;
+	height : 400px;
+ 	transform: translate(-50%, -50%);
+ 	transition : all 0.4s;
+}
+
+#나가기 {
+	position: fixed;
+	right: 5px;
+	top: 5px;
+	width : 30px;
+	height : 30px;
+	opacity : 0.8;
+}
+
+.loginform input[type=text] {
+	display : block;
+	font-size : 20px;
+	font-weight : bolder;
+	text-shadow : -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+	color: white;
+	position : relative;
+	left : 50px;
+	top : 100px;
+	background : transparent;
+	letter-spacing : 5px;
+	text-align : center;
+}
+
+.loginform input[type=password]{
+	font-size : 20px;
+	font-weight : bolder;
+	text-shadow : -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+	color: white;
+	position : relative;
+	left : 50px;
+	top : 100px;
+	background : transparent;
+	letter-spacing : 5px;
+	text-align : center;
+}
+
+.loginbtn {
+	font-weight : normal;
+	text-shadow : -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+	width : 300px;
+	color : white;
+	font-size : 20px;
+	background : transparent;
+	position : relative;
+	top : 150px;
+	left : 40px;
+	letter-spacing : 40px;
+	border : 10px solid white;
+	transition : all 0.4s;
+}
+
+.loginbtn:hover {
+	font-weight : bolder;
+	text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+	color: white;
+	font-size : 30px;
+	width : 300px;
+	border : 0.1px solid white;
+	cursor : pointer;
+	position : relative;
+	top : 150px;
+	left : 40px;
+	background : url("https://www.jeonmae.co.kr/news/photo/202109/855776_549368_4337.gif");
+}
+
+.regis {
+	position : absolute;
+	top : 310px;
+	left : 50px;
+	padding : 0 30px;
+	border : 2px white solid;
+	text-align : center;
+	border-radius : 20px;
+	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+	display: block;
+	color: white;
+
+}
+.regis a {
+	color : lightblue;
+}
+.regis a:visited {
+	color : lightblue;
+}
+.regis a:hover, a:active {
+	color : white;
+}
+
+.memregform {
+	background : #f5f5dc;
+}
+	
+div.upper > input[type=text] {
+	display : block;
+	height : 30px;
+	margin-top : 20px;
+	border : 1px solid black;
+	border-radius : 10px;
+}
+div.upper > input[type=password] {
+	display : block;
+	height : 30px;
+	margin-top : 20px;
+	border : 1px solid black;
+	border-radius : 10px;
+}
+.gen {
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+
+.hobby {
+	margin-top : 20px;
+	margin-bottom : 20px;
+	
+}
+#check {
+	display : inline-block;
+}
+
+#이름 {
+	display:block;
+}
+
+div.email > input, select{
+	margin-top : 20px;
+	margin-bottom : 20px;
+	border : 1px black solid;
+	border-radius : 5px;
+}
+
+div.resume > input, textarea {
+	margin-bottom : 20px;
+	border : 1px black solid;
+	border-radius : 5px;
+}
+
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+   clear: both;  /* row 뒤의 float를 무시함   */
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}

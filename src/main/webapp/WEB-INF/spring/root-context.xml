@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring 
+						http://mybatis.org/schema/mybatis-spring-1.2.xsd
+						http://www.springframework.org/schema/beans 
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						https://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:component-scan base-package="com.cosmos.common" />
+	<context:component-scan base-package="com.cosmos.dao" />
+	<context:component-scan base-package="com.cosmos.dto" />
+	<context:component-scan base-package="com.cosmos.service" />
+	
+	<mybatis-spring:scan base-package="com.cosmos.mapper" />
+	
+	<!-- db커넥션 풀 bean설정 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		
+		<!--	
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe" />
+		-->
+		<property name="username" value="khj" />
+		<property name="password" value="abcd" />
+	</bean> <!-- pom.xml에 springframework 라이브러리 써줘야 사용가능 -->
+	
+	<!-- mybatis-spring연동 : mapper  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
+		<!-- ref 매소드 매개변수를 주입하는 법 -->
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="100240000" />
+		<property name="maxUploadSizePerFile" value="10024000" />
+		<property name="maxInMemorySize" value="10024000" />
+		<property name="uploadTempDir" value ="file:\\d:\\khj\\upload\\tmp" />
+	
+	</bean>
+	
+	<!-- 생성사를 이용한 의존성 주입 -->
+	<!-- <bean id="memberService" class="com.cosmos.service.MemberServiceImp">
+		<constructor-arg ref="memberDao" />
+	</bean>
+		
+	<bean id="memberDao" class="com.cosmos.dao.MemberDaoImp"></bean>  -->
+	
+</beans>

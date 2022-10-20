@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--*** 인터페이스 이름(com.cosmos.mapper.MemberMapper)과 xml의 namespace 속성값이 일치해야함 ****-->
+<mapper namespace="com.cosmos.mapper.MemberMapper">
+
+	<select id="getById" resultType="com.cosmos.dto.Member"> <!--인터페이스 메소드 이름-->
+	<!-- ***반드시 dto.Member 에 있는 필드와 프로시저에서 던지는 필드 값이 일치해야!*** -->
+		select * from member where id = #{id} <!--sql 문의 ? 물음표와 같은 것 -->
+	</select>
+
+</mapper>

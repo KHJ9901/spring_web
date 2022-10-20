@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--*** 인터페이스 이름(com.cosmos.mapper.ReplyMapper)과 xml의 namespace 속성값이 일치해야함 ****-->
+<mapper namespace="com.cosmos.mapper.ReplyMapper">
+
+<!--	<select id="getContent" resultType="com.cosmos.dto.Reply"> --> <!--인터페이스 메소드 이름-->
+	<!-- ***반드시 dto.Reply 에 있는 필드와 프로시저에서 던지는 필드 값이 일치해야!*** -->
+<!--		select * from reply where seqno = #{seqno}--> <!--sql 문의 ? 물음표와 같은 것 -->
+<!--	</select>-->
+	<select id="getCountByBno" resultType="int">
+		SELECT count(*) FROM reply WHERE board_seqno = #{bno}
+	</select>
+	
+	<select id="getList" resultType="com.cosmos.dto.ReplyVO">
+		<![CDATA[
+			SELECT *
+			FROM (
+				SELECT /*+INDEX(reply PK_REPLY) */
+					   rownum rn, seqno, content, id, board_seqno,
+					   TO_CHAR(wdate, 'YYYY-MM-DD HH:MI:SS') as wdate
+				FROM reply
+				WHERE board_seqno = #{bno}
+				AND rownum <= #{cri.currentPage} * #{cri.rowPerPage}
+			) WHERE rn > (#{cri.currentPage} -1) * #{cri.rowPerPage}
+		]]>
+	</select>
+	
+	<select id="getOne" resultType="com.cosmos.dto.ReplyVO">
+		SELECT * FROM reply WHERE seqno = #{rno}
+	</select>
+	
+	<insert id="insert">
+		insert into reply(seqno, content, id, board_seqno)
+		values (reply_seq.NEXTVAL, #{comment}, #{id}, #{boardNo})
+	</insert>
+	
+	<update id="update">
+		UPDATE reply SET content = #{content} WHERE seqno = #{seqno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM reply WHERE seqno = #{rno}
+	</delete>
+	
+</mapper>
